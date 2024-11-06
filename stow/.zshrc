@@ -57,6 +57,8 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.zsh_aliases
 
+[ -f ~/.zsh_aliases_private ] && source ~/.zsh_aliases_private
+
 ################################################################################
 #                                    prompt
 ################################################################################
