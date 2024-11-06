@@ -1,15 +1,12 @@
 -- [[ Setting options ]]
 -- See `:help vim.opt`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.hidden = true
 -- Make line numbers default
 vim.opt.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
+
 vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
