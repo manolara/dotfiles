@@ -8,6 +8,7 @@ return {
           -- Disable default mappings
           ['<C-h>'] = false,
           ['<C-l>'] = false,
+          ['<C-p>'] = false,
           ['<C-v>'] = { 'actions.select', opts = { vertical = true }, desc = 'Open the entry in a vertical split' },
         },
         use_default_keymaps = true, -- https://github.com/stevearc/oil.nvim?tab=readme-ov-file#options
