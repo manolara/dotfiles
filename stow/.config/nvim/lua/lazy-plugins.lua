@@ -37,6 +37,8 @@ require('lazy').setup({
 
   require 'plugins/harpoon',
 
+  require 'plugins/lualine',
+
   'ThePrimeagen/vim-be-good',
 }, {
   ui = {
