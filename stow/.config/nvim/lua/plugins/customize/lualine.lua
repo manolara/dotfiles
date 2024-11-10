@@ -32,13 +32,19 @@ local custom_vague = require 'plugins.customize.lualine_vague'
 
 local gray_path = '#505050'
 local off_black = '#101010'
+local normal_bg = custom_vague.command.a.bg
+local command_bg = custom_vague.normal.a.bg
+local normal_b_fg = custom_vague.command.b.fg
+local command_b_fg = custom_vague.normal.b.fg
 
-custom_vague.normal.a.bg = custom_vague.normal.c.bg
+custom_vague.normal.a.bg = normal_bg
+custom_vague.command.a.bg = command_bg
+custom_vague.normal.b.fg = normal_b_fg
+custom_vague.command.b.fg = command_b_fg
 
-custom_vague.normal.b.fg = '#999999'
-
+custom_vague.normal.b.fg = '#c6c6ce2'
 for _, mode in ipairs { 'normal', 'insert', 'visual', 'command', 'replace' } do
-  custom_vague[mode].b.bg = '#222222'
+  custom_vague[mode].b.bg = '#202020'
   custom_vague[mode].c.fg = gray_path
   custom_vague[mode].c.bg = off_black
 end

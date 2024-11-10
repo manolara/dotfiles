@@ -154,6 +154,4 @@ for _, section in pairs(M) do
   end
 end
 
-print(M.insert.c.fg, M.normal.b.fg)
-
 return M
