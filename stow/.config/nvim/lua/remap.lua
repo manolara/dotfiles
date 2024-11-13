@@ -51,6 +51,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- IMPORTANT KEYMAPS
 set('i', 'jk', '<Esc>', { desc = 'Exit insert Mode' })
+set('i', 'jK', '<Esc>', { desc = 'Exit insert Mode' })
+set('i', 'Jk', '<Esc>', { desc = 'Exit insert Mode' })
+set('i', 'JK', '<Esc>', { desc = 'Exit insert Mode' })
 set('n', '<C-d>', '<C-d>zz', { desc = 'Recenter after half page down' })
 set('n', '<C-u>', '<C-u>zz', { desc = 'Recenter after half page up' })
 
