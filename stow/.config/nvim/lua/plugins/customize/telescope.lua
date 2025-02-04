@@ -1,4 +1,10 @@
 local entry_display = require 'telescope.pickers.entry_display'
+local actions = require 'telescope.actions'
+local lga_actions = require 'telescope-live-grep-args.actions'
+local transform_mod = require('telescope.actions.mt').transform_mod
+local action_state = require 'telescope.actions.state'
+local fb = require('telescope').extensions.file_browser
+local current_line = action_state.get_current_line()
 
 local function shorten_path(path)
   local cwd = assert(vim.uv.cwd())
@@ -47,10 +53,6 @@ local function lsp_location_entry_maker(entry)
 end
 
 local ts_select_dir_for_grep = function(live_grep_func)
-  local action_state = require 'telescope.actions.state'
-  local fb = require('telescope').extensions.file_browser
-  local current_line = action_state.get_current_line()
-
   fb.file_browser {
     files = false,
     depth = false,
@@ -73,9 +75,6 @@ local ts_select_dir_for_grep = function(live_grep_func)
   }
 end
 
-local actions = require 'telescope.actions'
-local lga_actions = require 'telescope-live-grep-args.actions'
-local transform_mod = require('telescope.actions.mt').transform_mod
 local custom_actions = transform_mod {
   open_first_qf_item = function(_)
     vim.cmd.cfirst()
@@ -180,13 +179,11 @@ require('telescope').setup {
   },
 }
 
--- Enable Telescope extensions if they are installed
 pcall(require('telescope').load_extension, 'fzf')
 pcall(require('telescope').load_extension, 'ui-select')
 pcall(require('telescope').load_extension 'live_grep_args')
 pcall(require('telescope').load_extension 'smart_history')
 
--- See `:help telescope.builtin`
 local builtin = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
@@ -209,8 +206,6 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
--- It's also possible to pass additional configuration options.
---  See `:help telescope.builtin.live_grep()` for information about particular keys
 vim.keymap.set('n', '<leader>s/', function()
   builtin.live_grep {
     grep_open_files = true,
