@@ -53,4 +53,9 @@ alias cdot='cd ~/dotfiles'
 alias amend='git diff && git add . && git commit --amend --no-edit'
 alias ls='eza'
 alias deletebranchesexceptmaster="git branch | grep -v "master" | xargs git branch -D"
+alias quickauth='source ~/scripts/quick-auth.sh'
+alias wan='~/scripts/wan.sh'
+alias pushcrown='~/scripts/push_local_crown.sh'
+alias exportk8s='~/scripts/exportk8s.sh'
+
 

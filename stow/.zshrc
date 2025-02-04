@@ -7,6 +7,13 @@ for file in $HOME/.kube/configs/*.yaml; do
   export KUBECONFIG=$KUBECONFIG:$file
 done
 
+export_k8s() {
+    export PLATFORM=$(kubectl config current-context)
+    export ENVIRONMENT=$(kubectl config view --minify --output 'jsonpath={..namespace}')
+    
+    echo "PLATFORM: $PLATFORM"
+    echo "ENVIRONMENT: $ENVIRONMENT"
+}
 ################################################################################
 #                                 zsh-vi-mode
 ################################################################################
@@ -172,5 +179,10 @@ export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
+## for forgit + delta to work well
+export COLUMNS
+export FZF_PREVIEW_COLUMNS
 
 
+
+/usr/local/bin/forti-auth-check.sh
