@@ -56,6 +56,7 @@ set('i', 'Jk', '<Esc>', { desc = 'Exit insert Mode' })
 set('i', 'JK', '<Esc>', { desc = 'Exit insert Mode' })
 set('n', '<C-d>', '<C-d>zz', { desc = 'Recenter after half page down' })
 set('n', '<C-u>', '<C-u>zz', { desc = 'Recenter after half page up' })
+set('v', 'p', 'P', { desc = 'paste without overwriting register' })
 
 -- Quickfix
 set('n', '<leader>q', function()
