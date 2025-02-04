@@ -39,6 +39,8 @@ require('lazy').setup({
 
   require 'plugins/lualine',
 
+  require 'plugins/colorizer',
+
   'ThePrimeagen/vim-be-good',
 }, {
   ui = {
