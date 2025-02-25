@@ -41,6 +41,8 @@ require('lazy').setup({
 
   require 'plugins/colorizer',
 
+  { 'tpope/vim-fugitive', event = 'VeryLazy' },
+
   'ThePrimeagen/vim-be-good',
 }, {
   ui = {
