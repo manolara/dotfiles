@@ -3,8 +3,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'go', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'yaml' },
-      -- Autoinstall languages that are not installed
+      ensure_installed = { 'bash', 'c', 'go', 'sql', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'yaml' },
       auto_install = true,
       highlight = {
         enable = true,
@@ -35,7 +34,7 @@ return {
     'nvim-treesitter/nvim-treesitter-context',
     config = function()
       require('treesitter-context').setup {
-        separator = '-',
+        separator = '─',
       }
     end,
   },
