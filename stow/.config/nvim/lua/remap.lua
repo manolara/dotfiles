@@ -100,5 +100,19 @@ end, { desc = 'Yank the sourcegraph URL to the current position in the buffer' }
 -- Execute lua file
 set('n', '<leader><leader>x', '<cmd>source %<CR>', { desc = 'Execute the current file' })
 
+vim.keymap.set('n', '<leader>gp', function()
+  local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  local line = vim.api.nvim_get_current_line()
+  local var_name = line:match 'fmt%.Println%(([^%)]+)%)'
+  if var_name then
+    local capitalized_var = var_name:upper():gsub('"', '') -- Ensure it removes quotes if it's a string
+    vim.api.nvim_buf_set_lines(0, row - 1, row, false, {
+      string.format('fmt.Println("\\n_______%s________")', capitalized_var),
+      line,
+    })
+  else
+    print 'No fmt.Println() pattern found on the current line.'
+  end
+end, { desc = 'Replace fmt.Println(variable) with debug output' })
 -- vim: ts=2 sts=2 sw=2 et
 -- --
