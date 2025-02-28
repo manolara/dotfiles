@@ -10,11 +10,8 @@ cmp.setup {
     end,
   },
   completion = { completeopt = 'menu,menuone,noinsert' },
+  preselect = cmp.PreselectMode.None,
 
-  -- For an understanding of why these mappings were
-  -- chosen, you will need to read `:help ins-completion`
-  --
-  -- No, but seriously. Please read `:help ins-completion`, it is really good!
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
