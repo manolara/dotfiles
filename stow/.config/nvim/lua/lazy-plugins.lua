@@ -43,6 +43,8 @@ require('lazy').setup({
 
   { 'tpope/vim-fugitive', event = 'VeryLazy' },
 
+  require 'plugins/ufo',
+
   'ThePrimeagen/vim-be-good',
 }, {
   ui = {
