@@ -34,6 +34,7 @@ return {
 
     config = function()
       vim.diagnostic.config { virtual_text = true }
+
       --  This function gets run when an LSP attaches to a particular buffer.
       --    That is to say, every time a new file is opened that is associated with
       --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -120,10 +121,6 @@ return {
             })
           end
 
-          -- The following autocommand is used to enable inlay hints in your
-          -- code, if the language server you are using supports them
-          --
-          -- This may be unwanted, since they displace some of your code
           if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
@@ -132,10 +129,6 @@ return {
         end,
       })
 
-      -- LSP servers and clients are able to communicate to each other what features they support.
-      --  By default, Neovim doesn't support everything that is in the LSP specification.
-      --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
-      --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
@@ -147,6 +140,15 @@ return {
 
       local servers = {
         gopls = {
+          -- root_dir = function(fname)
+          --   -- If plz set vault as root dir
+          --   local plz_root = vim.fs.root(fname, '.plzconfig')
+          --   if plz_root and vim.fs.basename(plz_root) == 'src' then
+          --     return 'home/manolis/core3/src/vault'
+          --   end
+          --   print(vim.fn.getcwd())
+          -- end,
+
           on_attach = function(client, _)
             if client.name == 'gopls' and not client.server_capabilities.semanticTokensProvider then
               -- vim.api.nvim_out_write 'should be applying the tokens\n'
@@ -169,13 +171,32 @@ return {
             },
           },
         },
-        pyright = {},
-        -- Some languages (like typescript) have entire language plugins that can be useful:
-        --    https://github.com/pmizio/typescript-tools.nvim
-        --
-        -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
-        --
+
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                -- diagnosticMode = 'openFilesOnly',
+                useLibraryCodeForTypes = true,
+              },
+            },
+          },
+          on_new_config = function(config, root_dir)
+            if vim.uv.fs_stat(vim.fs.joinpath(root_dir, '.plzconfig')) then
+              config.settings = vim.tbl_deep_extend('force', config.settings, {
+                python = {
+                  analysis = {
+                    extraPaths = {
+                      vim.fs.joinpath(root_dir, 'plz-out/python/venv'),
+                    },
+                    exclude = { 'plz-out' },
+                  },
+                },
+              })
+            end
+          end,
+        },
         jinja_lsp = {},
 
         lua_ls = {
