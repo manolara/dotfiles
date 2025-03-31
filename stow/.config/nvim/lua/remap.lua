@@ -20,12 +20,6 @@ set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]ui
 -- or just use <C-\><C-n> to exit terminal mode
 set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- TIP: Disable arrow keys in normal mode
--- set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
-
 --  Use CTRL+<hjkl> to switch between windows
 set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })

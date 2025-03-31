@@ -56,6 +56,6 @@ alias deletebranchesexceptmaster="git branch | grep -v "master" | xargs git bran
 alias quickauth='source ~/scripts/quick-auth.sh'
 alias wan='~/scripts/wan.sh'
 alias pushcrown='~/scripts/push_local_crown.sh'
-alias exportk8s='~/scripts/exportk8s.sh'
+alias exportk8s='source ~/scripts/exportk8s.sh'
 
 
