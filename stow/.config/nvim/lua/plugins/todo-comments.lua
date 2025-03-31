@@ -12,6 +12,11 @@ return {
       signs = false,
       highlight = {
         keyword = 'fg',
+        after = 'fg',
+        pattern = [[.*<(KEYWORDS)(\([^\)]*\))?:]],
+      },
+      search = {
+        pattern = [[\b(KEYWORDS)(\([^\)]*\))?:]],
       },
     },
   },
