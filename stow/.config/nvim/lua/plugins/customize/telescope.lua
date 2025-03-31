@@ -91,8 +91,8 @@ require('telescope').setup {
         ['<c-q>'] = actions.smart_send_to_qflist + actions.open_qflist + custom_actions.open_first_qf_item,
         ['<c-l>'] = actions.smart_send_to_loclist + actions.open_loclist + custom_actions.open_first_loc_item,
         ['<c-w>'] = actions.delete_buffer,
-        ['<C-Down>'] = actions.cycle_history_next,
-        ['<C-Up>'] = actions.cycle_history_prev,
+        ['<c-k>'] = actions.cycle_history_next,
+        ['<C-j>'] = actions.cycle_history_prev,
       },
     },
     history = {
